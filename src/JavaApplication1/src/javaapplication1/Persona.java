@@ -6,6 +6,10 @@ public class Persona {
     public Persona(String n){
         this.nombre = n;
     }
+    
+    public Persona () {
+    }
+    
     public String getNombre(){
         return this.nombre;
     }
