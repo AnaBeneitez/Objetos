@@ -37,11 +37,13 @@ public class Triangulo extends Figura2D{
 
     @Override
     public float calcularArea() {
-        
+        float semiPerimetro = this.calcularPerimetro() / 2.00f;
+        double formula = Math.sqrt(semiPerimetro * (semiPerimetro - ladoA) * (semiPerimetro - ladoB) * (semiPerimetro - ladoC));
+        return (float) formula;
     }
-
+    
     @Override
     public float calcularPerimetro() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.ladoA + this.ladoB + this.ladoC;
     }
 }
