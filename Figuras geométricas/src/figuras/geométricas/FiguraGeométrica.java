@@ -27,6 +27,7 @@ public class FiguraGeométrica {
         for(int i = 0; i < arreglo.length; i++) {
             System.out.println(arreglo[i].calcularPerimetro());
             System.out.println(arreglo[i].calcularArea());
+            System.out.println(arreglo[i].getClass());
         }
 
     }
