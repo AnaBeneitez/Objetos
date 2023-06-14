@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public class Circulo extends Figura2D{
     protected float radio;

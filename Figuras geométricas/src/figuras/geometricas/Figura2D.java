@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public abstract class Figura2D {
     

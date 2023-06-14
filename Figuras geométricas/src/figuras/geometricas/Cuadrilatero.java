@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public abstract class Cuadrilatero extends Figura2D {
     protected float ladoA;

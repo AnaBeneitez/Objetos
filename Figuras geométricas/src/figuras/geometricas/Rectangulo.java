@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public class Rectangulo extends Cuadrilatero {
     public Rectangulo (float ladoA, float ladoB) {

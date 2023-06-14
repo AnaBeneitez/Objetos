@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public class Triangulo extends Figura2D{
     protected float ladoA;

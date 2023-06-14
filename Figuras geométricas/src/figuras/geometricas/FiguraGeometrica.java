@@ -1,6 +1,6 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
-public class FiguraGeométrica {
+public class FiguraGeometrica {
 
     public static void main(String[] args) {
         Figura2D [] arreglo = new Figura2D [4];

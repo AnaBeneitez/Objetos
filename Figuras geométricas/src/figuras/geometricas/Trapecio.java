@@ -1,4 +1,4 @@
-package figuras.geométricas;
+package figuras.geometricas;
 
 public class Trapecio extends Cuadrilatero{
     public Trapecio (float ladoA, float ladoB, float ladoC) {
