@@ -36,12 +36,12 @@ public class Listita <E> implements Collection <E> {
     public Iterator<E> iterator() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+/*
     @Override
     public Object[] toArray() {
         return this.toArray();
     }
-
+*/
     @Override
     public <T> T[] toArray(T[] a) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
