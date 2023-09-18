@@ -7,18 +7,18 @@ import model.Persona;
 public class DaoPersonaList implements dao {
     
     private List<Persona> gente;
-    private static DaoPersonaList instance;
+    //private static DaoPersonaList instance;
 
-    private DaoPersonaList() {
+    public DaoPersonaList() {
         gente = new ArrayList();
     }
     
-    public DaoPersonaList getInstance() {
+    /*public DaoPersonaList getInstance() {
         if(instance == null) {
             instance = new DaoPersonaList();
         }
         return instance;
-    }
+    }*/
     
     @Override
     public void save(Object d) throws DocumentoRepetidoException {
@@ -48,24 +48,29 @@ public class DaoPersonaList implements dao {
     }
 
     @Override
-    public void update(Object d) {
+    public boolean update(Object d) {
+        boolean actualizado = false;
         Persona aActualizar = (Persona) d;
         for(Persona p: gente) {
             if(p.getDocumento() == aActualizar.getDocumento()) {
                 p.setNombre(aActualizar.getNombre());
                 p.setApellido(aActualizar.getApellido());
                 p.setDocumento(aActualizar.getDocumento());
+                actualizado = true;
             }
         }
+        return actualizado;
     }
 
     @Override
-    public void delete(long documento) {
+    public boolean delete(long documento) {
+        boolean borrado = false;
         for(Persona p: gente){
             if(p.getDocumento() == documento){
-                gente.remove(p);
+                borrado = gente.remove(p);
             }
         }
+        return borrado;
     }
     
     public void comprobarExisteDocumento(long documento) throws DocumentoRepetidoException {

@@ -6,6 +6,6 @@ public interface dao<T> {
     public void save(T d) throws DocumentoRepetidoException;
     public T find (long documento);
     public List<T> getAll();
-    public void update(T d);
-    public void delete(long documento);    
+    public boolean update(T d);
+    public boolean delete(long documento);    
 }

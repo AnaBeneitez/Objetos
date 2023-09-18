@@ -13,14 +13,14 @@ public class AgendaControladora {
     
     public AgendaControladora() {
         this.vista = new AgendaVista();
-        this.modelo.getInstance();
+        this.modelo = new DaoPersonaList();
     }
     
     public void mostrarAgenda() {
         int op = 0;
         do{
         vista.mostrarMenu();
-        vista.leerOpcion();
+        op = vista.leerOpcion();
         ejecutarOpcion(op);
         }while(op != 6);
     }
@@ -32,6 +32,7 @@ public class AgendaControladora {
             case 3 -> listarPersonas();
             case 4 -> modificarPersona();
             case 5 -> eliminarPersona();
+            case 6 -> vista.mostrarMensaje("La agenda se cerrará.");
             default -> vista.mostrarMensaje("Opción incorrecta");
         }
     }
@@ -83,11 +84,22 @@ public class AgendaControladora {
                                     (String) datos.get(1), 
                                      (long) datos.get(2)
                                     );
-        modelo.update(nueva);
+        boolean actualizado = modelo.update(nueva);
+        if(actualizado){
+            vista.mostrarMensaje("La persona ha sido actualizada correctamente");
+        }else {
+            vista.mostrarMensaje("El documento ingresado no existe en la base de datos");
+        }
     }
 
     private void eliminarPersona() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        long documento = vista.leerEntero("Ingrese el documento de la persona que desea eliminar");
+        boolean eliminado = modelo.delete(documento);
+        if(eliminado) {
+            vista.mostrarMensaje("La persona ha sido eliminada correctamente");
+        }else {
+            vista.mostrarMensaje("El documento ingresado no existe en la base de datos");
+        }
     }
     
 }
