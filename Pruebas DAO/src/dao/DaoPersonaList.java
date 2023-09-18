@@ -26,16 +26,18 @@ public class DaoPersonaList implements dao {
     }
 
     @Override
-    public Object find(long documento) throws DocumentoNoEncontrado {
-        boolean encontrado = false;
-        Persona buscado;
+    public Object find(long documento){
          
         for(Persona p: this.gente){
             if(p.getDocumento() == documento){
-                encontrado = true;
-                buscado = new Persona(p.getNombre(), p.getApellido(), p.getDocumento());
+                Persona encontrado = new Persona(p.getNombre(),
+                                            p.getApellido(),
+                                            p.getDocumento()
+                                                );
+                return encontrado;
             }
         }
+        return null;
     }
 
     @Override
