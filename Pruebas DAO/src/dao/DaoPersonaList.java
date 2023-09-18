@@ -21,8 +21,10 @@ public class DaoPersonaList implements dao {
     }
     
     @Override
-    public void save(Object d) {
-        gente.add((Persona)d);
+    public void save(Object d) throws DocumentoRepetidoException {
+        Persona nueva = (Persona) d;
+        comprobarExisteDocumento(nueva.getDocumento());
+        gente.add(nueva);
     }
 
     @Override
@@ -41,18 +43,36 @@ public class DaoPersonaList implements dao {
     }
 
     @Override
-    public List getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Persona> getAll() {
+        return this.gente;
     }
 
     @Override
     public void update(Object d) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Persona aActualizar = (Persona) d;
+        for(Persona p: gente) {
+            if(p.getDocumento() == aActualizar.getDocumento()) {
+                p.setNombre(aActualizar.getNombre());
+                p.setApellido(aActualizar.getApellido());
+                p.setDocumento(aActualizar.getDocumento());
+            }
+        }
     }
 
     @Override
     public void delete(long documento) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for(Persona p: gente){
+            if(p.getDocumento() == documento){
+                gente.remove(p);
+            }
+        }
     }
     
+    public void comprobarExisteDocumento(long documento) throws DocumentoRepetidoException {
+        for(Persona p: gente){
+            if(p.getDocumento() == documento){
+                throw new DocumentoRepetidoException("El documento ya existe en la base de datos");
+            }
+        }
+    }
 }
