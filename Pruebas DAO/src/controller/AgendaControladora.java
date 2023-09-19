@@ -13,7 +13,7 @@ public class AgendaControladora {
     
     public AgendaControladora() {
         this.vista = new AgendaVista();
-        this.modelo = new DaoPersonaList();
+        this.modelo = DaoPersonaList.getInstance();
     }
     
     public void mostrarAgenda() {

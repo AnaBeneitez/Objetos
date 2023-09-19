@@ -7,18 +7,18 @@ import model.Persona;
 public class DaoPersonaList implements dao {
     
     private List<Persona> gente;
-    //private static DaoPersonaList instance;
+    private static DaoPersonaList instance;
 
-    public DaoPersonaList() {
+    private DaoPersonaList() {
         gente = new ArrayList();
     }
     
-    /*public DaoPersonaList getInstance() {
+    public static DaoPersonaList getInstance() {
         if(instance == null) {
             instance = new DaoPersonaList();
         }
         return instance;
-    }*/
+    }
     
     @Override
     public void save(Object d) throws DocumentoRepetidoException {
@@ -64,13 +64,13 @@ public class DaoPersonaList implements dao {
 
     @Override
     public boolean delete(long documento) {
-        boolean borrado = false;
         for(Persona p: gente){
             if(p.getDocumento() == documento){
-                borrado = gente.remove(p);
+                gente.remove(p);
+                return true;
             }
         }
-        return borrado;
+        return false;
     }
     
     public void comprobarExisteDocumento(long documento) throws DocumentoRepetidoException {
