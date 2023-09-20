@@ -1,0 +1,5 @@
+package listados;
+
+class Persona {
+
+}
